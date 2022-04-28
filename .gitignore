@@ -1,0 +1,7 @@
+*.png
+*.npy
+/data
+/Max
+/experiments
+/tests_old
+/old
