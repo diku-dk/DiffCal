@@ -1,7 +1,9 @@
-/experiments
 *.pdf
 *.png
 *.npy
 *.jpg
 *.pt
 *.gif
+*.obj
+*.tet
+.msh

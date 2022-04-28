@@ -1,10 +1,4 @@
-*.png
-*.npy
-*.pdf
-*.pt
-/data
 /Max
-/experiments
 /tests_old
 /old
 __pycache__/
