@@ -1,0 +1,1 @@
+python3 -m main --type dynamic_bend --exp ./experiments/paper_experiments/lh_m/lh_m_viscosity_1.exp --lr 1.0 1e3 0 1e-1 --num_iters 10 --p0 7e4 2.5e6 5.0 --opt 1 1 0 1 --perturb small --bg_thr 0.549  --set_seed 0

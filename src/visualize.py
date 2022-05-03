@@ -2,17 +2,26 @@ from matplotlib import cm
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 from mpl_toolkits.mplot3d import Axes3D
+<<<<<<< HEAD
 from matplotlib.colors import Normalize, ListedColormap
+=======
+from matplotlib.colors import Normalize
+>>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
 import numpy as np
 import os
 from abc import ABC, abstractmethod
 import torch
+<<<<<<< HEAD
 import seaborn
 
 from src.utils.object import Object
 from src.experiment_types import Experiment, StaticBendExp
 
 
+=======
+import seaborn as sns
+from src.utils.object import Object
+>>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
 
 class Plot(ABC):
 
@@ -27,12 +36,18 @@ class Plot(ABC):
     def save_figure(self, name, path='./plots'):
         os.makedirs(path, exist_ok=True)
         self.make_figure()
+<<<<<<< HEAD
         plt.savefig(f'{path}/{name}.pdf', bbox_inches='tight')
         plt.savefig(f'{path}/{name}.png', dpi=300, bbox_inches='tight')
+=======
+        plt.savefig(f'{path}/{name}.pdf')
+        plt.savefig(f'{path}/{name}.png')
+>>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
 
 
 class TetwisePlot(Plot):
 
+<<<<<<< HEAD
     def __init__(self, object: Object, param_file: str):
         self.object = object
         self.lame_params = torch.load(param_file)[1:].reshape(-1,3)
@@ -107,10 +122,34 @@ class TetwisePlot(Plot):
         V = self.object.vertices
         ax.add_collection3d(Poly3DCollection([V[f] for f in F], facecolors=facecolors))
         axlim = (V.max() - V.min()) / 2.
+=======
+    def __init__(self, object: Object, tet_colors: np.ndarray = None):
+        self.object = object
+        if tet_colors is None:
+            self.tet_colors = np.array([object.vertices[t].mean() for t in object.tetrahedra])
+        else:
+            self.tet_colors = tet_colors
+
+    def make_figure(self):
+        # plt.style.use('seaborn-whitegrid')
+        fig = plt.figure()
+        ax = fig.gca(projection='3d')
+        # colormap = cm.get_cmap('vlag_r')
+        # colormap = cm.get_cmap('bwr_r')
+        # colormap = cm.get_cmap('seismic_r')
+        colormap = cm.get_cmap('coolwarm_r')
+
+        # colormap = sns.color_palette("vlag", as_cmap=True)
+        tetcolors = Normalize(self.tet_colors.min(),self.tet_colors.max())(self.tet_colors)
+        tetcolors = colormap(tetcolors)
+        ax.add_collection3d(Poly3DCollection([self.object.vertices[t] for t in self.object.tetrahedra], facecolors=tetcolors))
+        axlim = 6.5
+>>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
         ax.set_xlim([-axlim, axlim])
         ax.set_ylim([-axlim, axlim])
         ax.set_zlim([-axlim, axlim])
         ax.view_init(120, -90)
+<<<<<<< HEAD
         ax.set_axis_off()
         colorbar = fig.colorbar(m, shrink=0.5)
         colorbar.ax.set_ylabel('Young\'s modulus (kPa)', rotation=0, fontsize=10, labelpad=-25, y=1.15)
@@ -126,11 +165,22 @@ class MeanTetwisePlot(TetwisePlot):
         for i, lame_params in enumerate(all_lame_params):
             lame[i] = lame_params
         self.lame_params = torch.mean(lame, axis=0)
+=======
+
+        m = cm.ScalarMappable(cmap=colormap)
+        zmin = np.array([self.object.vertices[t].mean() for t in self.object.tetrahedra]).min()
+        zmax = np.array([self.object.vertices[t].mean() for t in self.object.tetrahedra]).max()
+        m.set_array([zmin, zmax])
+        m.set_clim(zmin, zmax)
+        fig.colorbar(m)
+        ax.set_axis_off()
+>>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
 
 class LossPlot(Plot):
 
     def __init__(self, txt_file):
         loss_array = np.loadtxt(txt_file, delimiter=',', skiprows=1)
+<<<<<<< HEAD
         self.bend_loss, self.twist_loss, self.total_loss = loss_array.T/1000
 
     def make_figure(self):
@@ -235,3 +285,25 @@ if __name__ == '__main__':
     # factory = 27852
     # optimal = 21812
     # MatchingPlot(exp, fix_parameter=[1080, optimal, 2.5e6, 5.]).make_figure()
+=======
+        self.bend_loss, self.twist_loss, self.joint_loss = loss_array.T
+
+    def make_figure(self):
+        fig = plt.figure()
+        # plt.plot(self.bend_loss, label='Bend')
+        # plt.plot(self.twist_loss, label='Twist')
+        plt.plot(self.joint_loss, label='Total')
+        plt.legend()
+        
+
+
+if __name__ == '__main__':
+
+    obj = Object('./data/long_hammer/long_hammer_f1494_v749.obj',
+                './data/long_hammer/long_hammer_f1494_v749.tet')
+    params = torch.load('result_lr_1e3/parameter_100.pt')[1:].reshape(-1,3).detach().cpu().numpy()
+    params = torch.load('max_param_bend_tetwise.pt')[1:].reshape(-1,3).detach().cpu().numpy()
+    young_mod = params[:,0]*2.98
+    TetwisePlot(obj, tet_colors=young_mod).save_figure('cmap')
+    # LossPlot('result_lr_1e3_old/loss.txt').save_figure('total')
+>>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6

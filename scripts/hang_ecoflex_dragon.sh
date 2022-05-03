@@ -1,0 +1,1 @@
+python3 -m main --type static_bend --exp ./experiments/paper_experiments/dragon_e/dragon_e_elasticity.exp --p0 5e3 --opt 0 1 0 0 --bg_thr 0.549 --perturb large --set_seed 0 

@@ -1,0 +1,1 @@
+python3 -m main --type static_bend_tetwise --exp ./experiments/paper_experiments/lh_m+e/lh_m+e_elasticity_tetwise.exp --lr 1e4 --num_iters 10 --p0 6e4 2.5e6 5.0 --bg_thr 0.4925 --perturb large --set_seed 0 

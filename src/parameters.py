@@ -43,12 +43,22 @@ class Parameters:
 
     @cached_property
     def tetwise_param_dist(self):
+<<<<<<< HEAD
+=======
+        for i, bbox  in enumerate(self.descriptor.experiment.object_parameter_bounding_boxes):
+            self.descriptor.scene.object.add_parameter_division(bbox, i)
+>>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
         return self.descriptor.scene.object.tet_wise_parameter_distribution
 
     def distribute_material_parameters(self):
         """ Assigns Lamé (mu and lambda) and damping parameters to each tetrahedra.
         """
         tetwise_param_dist = np.empty(0, dtype=np.int)
+<<<<<<< HEAD
+=======
+        for dbc in self.descriptor.experiment.object_dirichlet_boundary_conditions:
+            self.descriptor.scene.object.add_dirichlet_boundary_conditions(dbc)
+>>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
         tetwise_param_dist.resize(self.descriptor.scene.object.tetrahedra.shape[0])
         tet_count = tetwise_param_dist.shape[0]
         mat_min = torch.tensor((5e0, 1e4, 0.5), device=self.descriptor.device, dtype=torch.float32)

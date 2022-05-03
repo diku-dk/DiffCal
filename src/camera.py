@@ -4,7 +4,11 @@ import torch
 from typing import List
 from cached_property import cached_property
 from abc import ABC, abstractproperty
+<<<<<<< HEAD
 import matplotlib.pyplot as plt
+=======
+
+>>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
 from src.descriptor import Descriptor
 
 
@@ -19,6 +23,7 @@ class Camera(ABC):
     def target_images(self):
         pass
 
+<<<<<<< HEAD
     def show_images(self):
         self._make_figure()
         plt.show()
@@ -28,6 +33,8 @@ class Camera(ABC):
             plt.figure()
             plt.imshow((target_image.detach().cpu().numpy()*255).astype('uint8').squeeze(), cmap='nipy_spectral')
 
+=======
+>>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
     @cached_property
     def _all_target_images(self) -> List[torch.Tensor]:
         """ The ground truth images we wish to replicate.
