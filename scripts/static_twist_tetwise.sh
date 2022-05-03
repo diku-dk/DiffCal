@@ -1,1 +1,0 @@
-python3 -m main --type static_twist_tetwise --exp ./experiments/paper_experiments/twist_e+m/twist_e+m_elasticity_tetwise.exp --lr 1e4 --num_iters 10 --p0 5e4 2.5e6 5.0 --opt 0 1 0 0 --perturb small --bg_thr 0.523 --view 1 --set_seed 1  
