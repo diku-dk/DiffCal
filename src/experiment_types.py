@@ -246,11 +246,7 @@ class DynamicBendTwistExp(DynamicBendTwist, NonTetwiseBendTwist):
     pass
 
 class DynamicBendTwistTetwiseExp(DynamicBendTwist, TetwiseBendTwist):
-<<<<<<< HEAD
     pass
 
 
 
-=======
-    pass
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6

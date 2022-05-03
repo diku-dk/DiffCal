@@ -12,7 +12,6 @@ class Descriptor:
         self.device = device
         self.seed = seed
         self._check_input()
-<<<<<<< HEAD
         self.add_parameter_division()
         self.add_dirichlet_boundary_conditions()
 
@@ -23,9 +22,6 @@ class Descriptor:
     def add_dirichlet_boundary_conditions(self):
         for dbc in self.experiment.object_dirichlet_boundary_conditions:
             self.scene.object.add_dirichlet_boundary_conditions(dbc)
-=======
-
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
 
     @cached_property
     def experiment(self) -> ExperimentDescriptor:

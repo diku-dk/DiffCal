@@ -2,10 +2,7 @@ from abc import ABC, abstractproperty, abstractmethod
 import torch
 import numpy as np
 from cached_property import cached_property
-<<<<<<< HEAD
 import os
-=======
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
 
 from src.camera import StaticCamera, Camera
 from src.render import StaticRender, Render
@@ -81,7 +78,6 @@ class TwoModeLoss(Loss):
         self.descriptor_1, self.render_1, self.camera_1 = descriptor_1, render_1, camera_1
         self.descriptor_2, self.render_2, self.camera_2 = descriptor_2, render_2, camera_2
         self.alpha = alpha
-<<<<<<< HEAD
         self.loss_0 = self.get_loss_0()
         self.loss_1 = self.get_loss_1()
         save_results = True
@@ -93,14 +89,6 @@ class TwoModeLoss(Loss):
             os.makedirs(self.saving_path)
             with open(f'{self.saving_path}/loss.txt', 'a') as f:
                 print('bend, twist, total', file=f)
-=======
-        self.alpha = 0
-        self.loss_0 = self.get_loss_0()
-        self.loss_1 = self.get_loss_1()
-
-        with open('result_lr_1e4/loss.txt', 'a') as f:
-            print('bend, twist, total', file=f)
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
 
     @abstractmethod
     def get_loss_0(self) -> Loss:
@@ -114,37 +102,19 @@ class TwoModeLoss(Loss):
     def value(self):
         value_0, value_1 = self.loss_0.value, self.loss_1.value
         joint_loss = self.alpha*value_0 + (1-self.alpha)*value_1 
-<<<<<<< HEAD
         with open(f'{self.saving_path}/loss.txt', 'a') as f:
             print(f'{value_0}, {value_1}, {joint_loss}', file=f)
 
-=======
-        with open('result_lr_1e4/loss.txt', 'a') as f:
-            print(f'{value_0}, {value_1}, {joint_loss}', file=f)
-
-        print(value_0, value_1)
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
         return joint_loss
 
     @property
     def grad(self):
         grad_0, grad_1 = self.loss_0.grad, self.loss_1.grad
-<<<<<<< HEAD
         normal_grad_0 = grad_0/torch.norm(grad_0, p=2)
         normal_grad_1 = grad_1/torch.norm(grad_1, p=2)
         # print('Norm', torch.norm(grad_0, p=2), torch.norm(grad_1, p=2))
         # print('Unit', torch.norm(normal_grad_0, p=2), torch.norm(normal_grad_1, p=2))
         # print('DOT grad', torch.dot(grad_0, grad_1))
-=======
-
-
-        normal_grad_0 = grad_0/torch.norm(grad_0, p=2)
-        normal_grad_1 = grad_1/torch.norm(grad_1, p=2)
-
-        print('Norm', torch.norm(grad_0, p=2), torch.norm(grad_1, p=2))
-        print('Unit', torch.norm(normal_grad_0, p=2), torch.norm(normal_grad_1, p=2))
-        print('DOT grad', torch.dot(grad_0, grad_1))
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
         print('DOT Unit', torch.dot(normal_grad_0, normal_grad_1))
 
         return self.alpha*grad_0 + (1-self.alpha)*grad_1

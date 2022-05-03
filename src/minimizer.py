@@ -2,10 +2,7 @@ import tqdm
 from abc import ABC, abstractmethod
 import torch
 from typing import Union, Tuple
-<<<<<<< HEAD
 import os
-=======
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
 
 from src.descriptor import Descriptor
 from src.parameters import Parameters, TetwiseParameters
@@ -16,33 +13,21 @@ from src.camera import StaticCamera, DynamicCamera
 
 class Minimizer(ABC):
 
-<<<<<<< HEAD
     def __init__(self, loss: Loss, num_iters: int = 10, lr: Union[float, torch.Tensor]=1e3, eps: float = 1e-8, save_results=True):
-=======
-    def __init__(self, loss: Loss, num_iters: int = 10, lr: Union[float, torch.Tensor]=1e3, eps: float = 1e-8):
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
         self.loss = loss
         self.num_iters = num_iters
         self.lr = lr
         self.eps = eps
-<<<<<<< HEAD
         self.save_results=save_results
         if save_results:
             path = 'results'
             self.rep_number = len(os.listdir(path))
             self.saving_path = f'{path}/rep_{self.rep_number}'
             
-=======
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
     
     @abstractmethod
     def minimize(self):
         pass
-<<<<<<< HEAD
-=======
-
-    # def save_log(self, path):
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
         
 
 
@@ -54,7 +39,6 @@ class AdamManual(Minimizer):
         lr: Union[float, torch.Tensor] = 1e3,
         betas: Tuple[float, float] = (0.9, 0.999),
         eps: float = 1e-16,
-<<<<<<< HEAD
         delta: float = 1e-16,
         save_results=True):
 
@@ -62,16 +46,6 @@ class AdamManual(Minimizer):
         self.betas = betas
         self.delta = delta
 
-=======
-        delta: float = 1e-16):
-
-        super().__init__(loss, num_iters, lr, eps)
-        self.betas = betas
-        self.delta = delta
-        self.log = {}
-        self.optimal_loss = None
-        self.optimal_parameters = None
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
     
     def minimize(self):
         current_param = self.loss.parameters.parameter_tensor
@@ -80,12 +54,9 @@ class AdamManual(Minimizer):
         iteration_range = tqdm.tqdm(range(1, self.num_iters))
         
         for i in iteration_range:
-<<<<<<< HEAD
             if self.save_results:
                 os.makedirs(f'{self.saving_path}/parameters', exist_ok=True)
                 torch.save(current_param, f'{self.saving_path}/parameters/p_{i}.pt')
-=======
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
             loss, grad = self.loss.value, self.loss.grad
             beta_i = self.betas[0] * (1. - i / self.num_iters) / ((1 + self.betas[0]) + self.betas[0] * (1 - i / self.num_iters))
             m = grad + beta_i * m
@@ -100,18 +71,10 @@ class AdamManual(Minimizer):
 
             self.loss.parameters.parameter_tensor = next_param
             if (torch.norm(current_param - next_param) < self.delta) or (torch.norm(grad) < self.eps):
-<<<<<<< HEAD
                 break
             else:
                 current_param = next_param
             
-=======
-                self.optimal_parameters = next_param
-                self.optimal_loss = loss
-                break
-            else:
-                current_param = next_param
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
         return current_param, loss
 
 

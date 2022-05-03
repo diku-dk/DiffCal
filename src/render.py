@@ -28,11 +28,7 @@ class Render(ABC):
     def _make_figure(self):
         for rendered_image in self.rendered_images:
             plt.figure()
-<<<<<<< HEAD
             plt.imshow((rendered_image.detach().cpu().numpy()*255).astype('uint8').squeeze(), cmap='gray')
-=======
-            plt.imshow((rendered_image.detach().cpu().numpy()*255).astype('uint8').squeeze())
->>>>>>> 299ccbacc12c72009bfc61ef8be5ec8f4a581eb6
 
 
 
