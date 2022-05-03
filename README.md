@@ -15,7 +15,7 @@ All CAD models are stored at `data/cad_models`, and the results of the paper exp
 ## Method
 Every part in our pipeline is differentiable, as a result we can use the chain rule to get the gradient of the scalar loss function w.r.t the model parameters. The simulator is a function of the parameters and outputs the state which is then rendered into an image. We then minimize the L2 norm between the rendered images and the target depth images, obtained by a LIDAR camera. The code for each segment can be found under `src` directory.
 
-![methods_overview](https://user-images.githubusercontent.com/101255383/166225796-6bae87c3-420e-4077-88b2-66ce7b6691ef.png)
+![methods_overview](https://user-images.githubusercontent.com/101255383/166422034-8600be39-0992-4bff-a8fa-30ed4a9e22c7.png)
 
 ## Free Hanging Experiment
 To run this experiment, use the following bash scripts depending on the type of the material and the shape of the object.
