@@ -1,0 +1,17 @@
+The first position corresponds to deformation mode i.e.
+h: hanging
+t: twisting
+o: oscillating
+
+The second position corresponds to material type i.e.
+e: Ecoflex-50
+m: MoldStar-15
+
+The third position corresponds to shape i.e.
+c: cantilever
+s: spine
+d: dragon
+f: finger
+
+Example:
+t_mem_c -> twisting_moldstar+ecoflex+moldstar_cantilever
