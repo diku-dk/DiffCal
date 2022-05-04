@@ -1,0 +1,15 @@
+EXPERIMENT SETTINGS
+experiment_out_path=experiments/paper_experiments/twist_m+e+m/results/images_elasticity_2/
+duration=10.0
+dt=2.1701388888888886e-05
+sub_steps=1536
+fps=30
+camera_data_path=experiments/paper_experiments/twist_m+e+m/data/data_elasticity_2/
+camera_intrinsics=[739.375, 0.0, 550.1484375, 0.0, 741.4375, 390.64453125, 0.0, 0.0, 1.0]
+camera_distortion=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+rgb_to_depth_transform=[0.999890923500061, 0.014543239958584309, 0.002581859938800335, 0.0, -0.014615950174629688, 0.9994180202484131, 0.030821170657873154, 0.0, -0.0021321200765669346, -0.030855540186166763, 0.9995215535163879, 0.0, 0.0010274299420416355, -0.014142530038952827, 0.0023561499547213316, 1.0]
+camera_transform=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+object_data_path=./data/long_hammer
+object_transform=[0.9975640773773193, 0.0, -0.06975647062063217, -8.25, 0.0, 1.0, 0.0, -3.3, 0.06975647062063217, 0.0, 0.9975640773773193, -2.75, 0.0, 0.0, 0.0, 1.0]
+object_dirichlet_boundary_conditions=[7.0, inf, -inf, inf, -inf, inf, -inf, -7.0, -inf, inf, -inf, inf]
+object_parameter_bounding_boxes=[-inf, -2, -inf, inf, -inf, inf, -2, 2, -inf, inf, -inf, inf, 2, inf, -inf, inf, -inf, inf]

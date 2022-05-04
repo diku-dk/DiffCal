@@ -1,0 +1,23 @@
+EXPERIMENT RESULTS
+sim_steps=18199
+num_iterations=5
+num_parameters=1
+num_grads=7
+num_targets=12
+experiment_file=./experiments/paper_experiments/twist_e+m/twist_e+m_elasticity.exp
+out_folder=experiments/paper_experiments/twist_e+m/results/images_elasticity_1/
+loss_i=165022.25
+loss_i=165010.390625
+loss_i=0.0
+loss_i=0.0
+loss_i=0.0
+parameters_i=[1080.0, 55719.1171875, 2500000.0, 5.0, 55719.1171875, 2500000.0, 5.0]
+parameters_i=[1080.0, 58708.90625, 2500000.0, 5.0, 57945.44140625, 2500000.0, 5.0]
+parameters_i=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+parameters_i=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+parameters_i=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+grads_i=[0.0, -3.133096470264718e-05, 0.0, 0.0, -2.283639150846284e-05, 0.0, 0.0]
+grads_i=[0.0, -4.0958868339657784e-05, 0.0, 0.0, -1.551645436848048e-05, 0.0, 0.0]
+grads_i=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+grads_i=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+grads_i=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]

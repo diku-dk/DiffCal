@@ -2,8 +2,4 @@ __pycache__/
 *.py[cod]
 *$py.class
 /Max
-/tests_old
-/data
 /tests
-/multimode_results
-/experiments
