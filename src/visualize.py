@@ -10,7 +10,7 @@ import torch
 import seaborn
 
 from src.utils.object import Object
-from src.experiment_types import Experiment, StaticBendExp
+from src.experiment_types import Experiment, StaticHangExp
 
 
 
@@ -135,8 +135,8 @@ class LossPlot(Plot):
 
     def make_figure(self):
         fig = plt.figure()
-        plt.plot(self.bend_loss, label='Bend', color='tab:orange')
-        plt.plot(self.twist_loss, label='Twist', color='tab:green')
+        plt.plot(self.bend_loss, label='Hanging', color='tab:orange')
+        plt.plot(self.twist_loss, label='Twisting', color='tab:green')
         plt.plot(self.total_loss, label='Total', color='tab:blue')
         # plt.grid()
         plt.xlabel('# Iterations')
@@ -223,7 +223,7 @@ if __name__ == '__main__':
     # txt_files = [f'results/rep_{r}/loss.txt' for r in np.arange(3,13)]
     # MeanLossPlot(txt_files).save_figure('joint_loss')
 
-    # exp = StaticBendExp(exp_file=['./experiments/paper_experiments/lh_e/lh_e_elasticity.exp'],
+    # exp = StaticHangExp(exp_file=['./experiments/paper_experiments/lh_e/lh_e_elasticity.exp'],
     #                     initial_parameters=[5e4, 2.5e6, 5.],
     #                     optimizable=[0,1,0,0],
     #                     num_iters=1,

@@ -1,1 +1,1 @@
-python3 -m main --type static_bend --exp ./experiments/paper_experiments/lh_m/lh_m_elasticity.exp --p0 5e4 2.5e6 5.0 --opt 0 1 0 0 --bg_thr 0.60694 --perturb large --set_seed 0 
+python3 -m main --type static_hang --exp ./experiments/paper_experiments/lh_m/lh_m_elasticity.exp --p0 5e4 2.5e6 5.0 --opt 0 1 0 0 --bg_thr 0.60694 --perturb large --set_seed 0 

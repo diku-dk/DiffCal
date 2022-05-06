@@ -68,7 +68,7 @@ class Camera(ABC):
 
     @property
     def _timestamps(self):
-        return sorted([float(f.split('_')[1].split('.npy')[0]) for f in self._target_filenames])# [:12] # TODO: Find out the reason for 12.
+        return sorted([float(f.split('_')[1].split('.npy')[0]) for f in self._target_filenames])
 
     @property
     def _original_views(self) -> List[np.ndarray]:

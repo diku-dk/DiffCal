@@ -4,7 +4,7 @@ from typing import List
 
 from src.descriptor import Descriptor
 from src.parameters import Parameters, TetwiseParameters
-from src.simulation import Simulation, StaticBendSimulation, StaticTwistSimulation, DynamicBendSimulation, DynamicTwistSimulation
+from src.simulation import Simulation, StaticHangSimulation, StaticTwistSimulation, DynamicHangSimulation, DynamicTwistSimulation
 from src.render import Render, StaticRender, DynamicRender
 from src.camera import Camera, StaticCamera, DynamicCamera
 from src.loss import Loss, L2Loss, TetwiseL2Loss, TwoModeL2Loss, TwoModeTetwiseL2Loss
@@ -112,14 +112,14 @@ class Tetwise(Experiment):
         return AdamManual(self.loss, self.num_iters, self.lr)
 
 
-class StaticBendExp(Static, NonTetwise):
+class StaticHangExp(Static, NonTetwise):
 
     @cached_property
     def simulation(self):
-        return StaticBendSimulation(self.descriptor, self.parameters)
+        return StaticHangSimulation(self.descriptor, self.parameters)
 
 
-class StaticBendTetwiseExp(Tetwise, StaticBendExp):
+class StaticHangTetwiseExp(Tetwise, StaticHangExp):
     pass
 
 
@@ -134,11 +134,11 @@ class StaticTwistTetwiseExp(Tetwise, StaticTwistExp):
     pass
 
 
-class DynamicBendExp(Dynamic, NonTetwise):
+class DynamicHangExp(Dynamic, NonTetwise):
 
     @cached_property
     def simulation(self):
-        return DynamicBendSimulation(self.descriptor, self.parameters)
+        return DynamicHangSimulation(self.descriptor, self.parameters)
 
 class DynamicTwistExp(Dynamic, NonTetwise):
 
@@ -146,7 +146,7 @@ class DynamicTwistExp(Dynamic, NonTetwise):
     def simulation(self):
         return DynamicTwistSimulation(self.descriptor, self.parameters)
 
-class BendTwistExperiment(Experiment):
+class HangTwistExperiment(Experiment):
 
     def __init__(self,
                 exp_file: List[str], # [bend_exp_file, twist_exp_file]
@@ -171,7 +171,7 @@ class BendTwistExperiment(Experiment):
         self.perturb_type = perturb_type
         self.alpha = alpha
 
-class StaticBendTwist(BendTwistExperiment):
+class StaticHangTwist(HangTwistExperiment):
 
     @cached_property
     def render(self):
@@ -185,10 +185,10 @@ class StaticBendTwist(BendTwistExperiment):
 
     @cached_property
     def simulation(self):
-        return StaticBendSimulation(self.descriptor[0], self.parameters), \
+        return StaticHangSimulation(self.descriptor[0], self.parameters), \
                 StaticTwistSimulation(self.descriptor[1], self.parameters)
 
-class DynamicBendTwist(BendTwistExperiment):
+class DynamicHangTwist(HangTwistExperiment):
 
     @cached_property
     def render(self):
@@ -202,10 +202,10 @@ class DynamicBendTwist(BendTwistExperiment):
 
     @cached_property
     def simulation(self):
-        return DynamicBendSimulation(self.descriptor[0], self.parameters), \
+        return DynamicHangSimulation(self.descriptor[0], self.parameters), \
                 DynamicTwistSimulation(self.descriptor[1], self.parameters)
 
-class NonTetwiseBendTwist(BendTwistExperiment):
+class NonTetwiseHangTwist(HangTwistExperiment):
 
     @cached_property
     def parameters(self):
@@ -220,7 +220,7 @@ class NonTetwiseBendTwist(BendTwistExperiment):
     def minimizer(self):
         return AdamManual(self.loss, self.num_iters, self.lr)
 
-class TetwiseBendTwist(BendTwistExperiment):
+class TetwiseHangTwist(HangTwistExperiment):
 
     @cached_property
     def parameters(self):
@@ -236,16 +236,16 @@ class TetwiseBendTwist(BendTwistExperiment):
         return AdamManual(self.loss, self.num_iters, self.lr)
 
 
-class StaticBendTwistExp(StaticBendTwist, NonTetwiseBendTwist):
+class StaticHangTwistExp(StaticHangTwist, NonTetwiseHangTwist):
     pass
 
-class StaticBendTwistTetwiseExp(StaticBendTwist, TetwiseBendTwist):
+class StaticHangTwistTetwiseExp(StaticHangTwist, TetwiseHangTwist):
     pass
 
-class DynamicBendTwistExp(DynamicBendTwist, NonTetwiseBendTwist):
+class DynamicHangTwistExp(DynamicHangTwist, NonTetwiseHangTwist):
     pass
 
-class DynamicBendTwistTetwiseExp(DynamicBendTwist, TetwiseBendTwist):
+class DynamicHangTwistTetwiseExp(DynamicHangTwist, TetwiseHangTwist):
     pass
 
 

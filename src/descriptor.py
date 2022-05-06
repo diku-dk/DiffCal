@@ -12,8 +12,8 @@ class Descriptor:
         self.device = device
         self.seed = seed
         self._check_input()
-        self.add_parameter_division()
         self.add_dirichlet_boundary_conditions()
+        self.add_parameter_division()
 
     def add_parameter_division(self):
         for i, bbox  in enumerate(self.experiment.object_parameter_bounding_boxes):

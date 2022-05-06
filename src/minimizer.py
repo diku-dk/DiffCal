@@ -7,7 +7,7 @@ import os
 from src.descriptor import Descriptor
 from src.parameters import Parameters, TetwiseParameters
 from src.loss import Loss, L2Loss, TetwiseL2Loss, TwoModeL2Loss, TwoModeTetwiseL2Loss
-from src.simulation import StaticBendSimulation, StaticTwistSimulation
+from src.simulation import StaticHangSimulation, StaticTwistSimulation
 from src.render import StaticRender, DynamicRender
 from src.camera import StaticCamera, DynamicCamera
 
@@ -102,7 +102,7 @@ if __name__ == '__main__':
     init_params = [6e4, 2.5e6, 5.0, 6e4, 2.5e6, 5.0]
     
     params = TetwiseParameters(desc_1, initial_parameters=init_params, optimizable=[0,1,0,0], no_perturb=True)
-    sim_1, sim_2 = StaticBendSimulation(desc_1, params), StaticTwistSimulation(desc_2, params)
+    sim_1, sim_2 = StaticHangSimulation(desc_1, params), StaticTwistSimulation(desc_2, params)
     render_1, render_2 = StaticRender(desc_1, sim_1, camera_1), StaticRender(desc_2, sim_2, camera_2)
     loss = TwoModeTetwiseL2Loss(params, desc_1, render_1, camera_1, desc_2, render_2, camera_2)
 

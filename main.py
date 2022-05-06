@@ -1,5 +1,5 @@
-from src.experiment_types import StaticBendExp, StaticTwistExp, StaticBendTwistExp, StaticBendTetwiseExp,\
-                                 StaticTwistTetwiseExp, StaticBendTwistTetwiseExp, DynamicBendExp, DynamicTwistExp
+from src.experiment_types import StaticHangExp, StaticTwistExp, StaticHangTwistExp, StaticHangTetwiseExp,\
+                                 StaticTwistTetwiseExp, StaticHangTwistTetwiseExp, DynamicHangExp, DynamicTwistExp
 import argparse
 
 if __name__ == '__main__':
@@ -20,13 +20,13 @@ if __name__ == '__main__':
 
 
     setting = args.exp, args.p0, args.perturb, args.opt, args.num_iters, args.lr, args.bg_thr, args.view, args.device, args.set_seed
-    experiment_factory = {'static_bend': StaticBendExp,
+    experiment_factory = {'static_hang': StaticHangExp,
                         'static_twist': StaticTwistExp,
-                        'static_bendtwist': StaticBendTwistExp,
-                        'static_bend_tetwise': StaticBendTetwiseExp,
+                        'static_hangtwist': StaticHangTwistExp,
+                        'static_hang_tetwise': StaticHangTetwiseExp,
                         'static_twist_tetwise': StaticTwistTetwiseExp,
-                        'static_bendtwist_tetwise': StaticBendTwistTetwiseExp,
-                        'dynamic_bend': DynamicBendExp,
+                        'static_hangtwist_tetwise': StaticHangTwistTetwiseExp,
+                        'dynamic_hang': DynamicHangExp,
                         'dynamic_twist': DynamicTwistExp
                         }
     if args.type not in experiment_factory:

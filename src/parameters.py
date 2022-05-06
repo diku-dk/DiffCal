@@ -50,12 +50,11 @@ class Parameters:
         """
         tetwise_param_dist = np.empty(0, dtype=np.int)
         tetwise_param_dist.resize(self.descriptor.scene.object.tetrahedra.shape[0])
-        tet_count = tetwise_param_dist.shape[0]
         mat_min = torch.tensor((5e0, 1e4, 0.5), device=self.descriptor.device, dtype=torch.float32)
         mat_max = torch.tensor((25e4, 1e8, 100.0), device=self.descriptor.device, dtype=torch.float32)
-        mat_val = torch.zeros((tet_count, self.NUM_OF_PARAMS), device=self.descriptor.device, dtype=torch.float32).contiguous()
+        mat_val = torch.zeros((tetwise_param_dist.shape[0], self.NUM_OF_PARAMS), device=self.descriptor.device, dtype=torch.float32).contiguous()
         for p_id, parameter in enumerate(self.material_tensor):
-            mat_val[self.tetwise_param_dist == p_id] = torch.max(torch.min(mat_max, parameter), mat_min)
+            mat_val[tetwise_param_dist == p_id] = torch.max(torch.min(mat_max, parameter), mat_min)
         return mat_val
 
     @property

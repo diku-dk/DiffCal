@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from abc import ABC, abstractproperty
 
 from src.descriptor import Descriptor
-from src.simulation import Simulation, StaticBendSimulation, StaticTwistSimulation, DynamicBendSimulation
+from src.simulation import Simulation, StaticHangSimulation, StaticTwistSimulation, DynamicHangSimulation
 from src.parameters import Parameters, TetwiseParameters
 from src.camera import Camera, DynamicCamera, StaticCamera
 

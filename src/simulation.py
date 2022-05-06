@@ -40,7 +40,7 @@ class Simulation(ABC):
 
 
 
-class StaticBendSimulation(Simulation):
+class StaticHangSimulation(Simulation):
         
     @cached_property
     def _initial_model(self) -> df.sim.Model:
@@ -119,13 +119,13 @@ class StaticBendSimulation(Simulation):
         return self.state
 
 
-class DynamicBendSimulation(StaticBendSimulation):
+class DynamicHangSimulation(StaticHangSimulation):
 
     def get_current_state(self):
         return self.state
 
 
-class StaticTwistSimulation(StaticBendSimulation):
+class StaticTwistSimulation(StaticHangSimulation):
 
     def __init__(self, descriptor: Descriptor, parameters: Parameters,
                 checkpoint: bool = True, checkpoint_max_steps: int = 20000):
