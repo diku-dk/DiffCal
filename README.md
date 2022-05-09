@@ -9,14 +9,15 @@ All python dependencies are listed in `requirements.txt`. To create a virtual en
 ```
 ./scripts/dependencies.sh
 ```
+## Method
+Every part in our pipeline is differentiable, as a result we can use the chain rule to get the gradient of the scalar loss function w.r.t the model parameters. The simulator is a function of the parameters and outputs the state which is then rendered into an image. We then minimize the L2 norm between the rendered images and the target depth images, obtained by a LIDAR camera.
+![methods_overview](https://user-images.githubusercontent.com/101255383/166422034-8600be39-0992-4bff-a8fa-30ed4a9e22c7.png)
 ## Folder Structure
 * `CAD_models` has the digital model of the all the object shapes in our experiments.
-* `exp_data` has the data and the results of all the experiments in the paper and more. `exp_data/*/*.exp` has the configuration of each experiment. Please read the `exp_data/naming_guide.txt` for the subfolder naming convention. In `exp_data/*/camera_data`, you can find the LIDAR depth images as `d_*.npy`, the RGB images`c_*.npy`, and the view transform matrix as `v_*.npy`. You can find the results of the 10 experiment runs with random initial parameters in `exp_data/*/results/log'. They contain loss, gradient, and the parameters value over training iterations.
-* 
-## Method
-Every part in our pipeline is differentiable, as a result we can use the chain rule to get the gradient of the scalar loss function w.r.t the model parameters. The simulator is a function of the parameters and outputs the state which is then rendered into an image. We then minimize the L2 norm between the rendered images and the target depth images, obtained by a LIDAR camera. The code for each segment can be found under `src` directory.
+* `exp_data` has the data and the results of all the experiments in the paper and more. `exp_data/*/*.exp` has the configuration of each experiment. Please read the `exp_data/naming_guide.txt` for the subfolder naming convention. In `exp_data/*/camera_data`, you can find the LIDAR depth images as `d_*.npy`, the RGB images`c_*.npy`, and the view transform matrix as `v_*.npy`. You can find the results of the 10 experiment runs with random initial parameters in `exp_data/*/results/log`. They contain loss, gradient, and the parameters value over training iterations.
+* `src` has the code for each part introduced in Method section. 
+* `main.py` runs the specified experiment. To get help with the experiment configuration, use `python main.py --help`.
 
-![methods_overview](https://user-images.githubusercontent.com/101255383/166422034-8600be39-0992-4bff-a8fa-30ed4a9e22c7.png)
 
 ## Free Hanging Experiment
 To run this experiment, use the following bash scripts depending on the type of the material and the shape of the object.
