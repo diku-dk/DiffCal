@@ -10,8 +10,9 @@ All python dependencies are listed in `requirements.txt`. To create a virtual en
 ./scripts/dependencies.sh
 ```
 ## Folder Structure
-All CAD models are stored at `CAD_models`, and the results of the paper experiments are stored under `data/paper/*/results`. Beside the results, the setting for each experiment is specified in a `.exp` file. Note that all experiments in the paper are repeated 10 times with random initial parameters.  
-
+* `CAD_models` has the digital model of the all the object shapes in our experiments.
+* `exp_data` has the data and the results of all the experiments in the paper and more. `exp_data/*/*.exp` has the configuration of each experiment. Please read the `exp_data/naming_guide.txt` for the subfolder naming convention. In `exp_data/*/camera_data`, you can find the LIDAR depth images as `d_*.npy`, the RGB images`c_*.npy`, and the view transform matrix as `v_*.npy`. You can find the results of the 10 experiment runs with random initial parameters in `exp_data/*/results/log'. They contain loss, gradient, and the parameters value over training iterations.
+* 
 ## Method
 Every part in our pipeline is differentiable, as a result we can use the chain rule to get the gradient of the scalar loss function w.r.t the model parameters. The simulator is a function of the parameters and outputs the state which is then rendered into an image. We then minimize the L2 norm between the rendered images and the target depth images, obtained by a LIDAR camera. The code for each segment can be found under `src` directory.
 
