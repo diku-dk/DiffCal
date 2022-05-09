@@ -41,13 +41,13 @@ To run this experiment, use the following bash scripts depending on the type of 
 ./scripts/static_hang_moldstar_spine.sh
 ```
 <p align="center">
-<img src="https://user-images.githubusercontent.com/101255383/167427922-c9ade1ab-ec4e-4107-ae76-f882c4659769.png" width=750>
+<img src="https://user-images.githubusercontent.com/101255383/167427922-c9ade1ab-ec4e-4107-ae76-f882c4659769.png" width=500>
   </p>
 
 The following figure shows the rendered beam in gray overlayed on depth image camera in color. The simulation matches the real world when optimized.
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/101255383/167427841-8223aca7-4bde-4b0e-aecd-934f17a1321f.png" width=750>
+<img src="https://user-images.githubusercontent.com/101255383/167427841-8223aca7-4bde-4b0e-aecd-934f17a1321f.png" width=500>
   </p>
 
 ## Heterogeneous Materials
@@ -60,7 +60,7 @@ To run this experiment, use the following.
 ./scripts/static_twist_ecoflex+moldstar_cantilever.sh
 ```
 <p align="center">
-<img src="https://user-images.githubusercontent.com/101255383/167428088-4fa8ec47-9d71-4f93-bc0e-16c5df28a373.png" width=750>
+<img src="https://user-images.githubusercontent.com/101255383/167428088-4fa8ec47-9d71-4f93-bc0e-16c5df28a373.png" width=500>
   </p>
 
 ## Tetwise Experiment
@@ -80,7 +80,7 @@ Our method also deals well with objects with complex shapes. We have experimente
 ./scripts/static_hang_ecoflex_dragon.sh
 ```
 <p align="center">
-<img src="https://user-images.githubusercontent.com/101255383/167430850-13c7fbae-4981-40fe-aa85-30b828ed3d1b.png" width=750>
+<img src="https://user-images.githubusercontent.com/101255383/167430850-13c7fbae-4981-40fe-aa85-30b828ed3d1b.png" width=500>
   </p>
 
 ## Viscosity Estimation
