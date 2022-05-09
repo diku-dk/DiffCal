@@ -1,5 +1,5 @@
 # Differentiable Depth for Real2Sim Calibration of Soft Body Simulations
-This repository contains the code and the data to calibrate material model parameters for soft body simulation. We use two types of materials i.e. Ecoflex-50 (red) and MoldStar-15 (blue). We have also experimented with heterogenous objects. The shapes include cantilever, spine, XYZ RGB Dragon, and robotic finger. Deformation modes are free hanging, twisting, and oscillating.
+This repository contains the code and the data to calibrate material model parameters for soft body simulation. We use two types of materials, i.e. Ecoflex-50 (red) and MoldStar-15 (blue). We have also experimented with heterogeneous objects. The shapes include cantilever, spine, XYZ RGB Dragon, and robotic finger. Deformation modes are free hanging, twisting, and oscillating.
 ![objects](https://user-images.githubusercontent.com/101255383/166220869-53fef7a8-ca4e-45da-baf5-c3454f73819b.png)
 
 ## Requirements
@@ -7,6 +7,7 @@ All python dependencies are listed in `requirements.txt`. To create a virtual en
 ```
 ./scripts/dependencies.sh
 ```
+The dFlex package used in `src/simulation.py` can be obtained after having agreed to EULA. 
 
 ## Method
 Every part in our pipeline is differentiable, as a result we can use the chain rule to get the gradient of the scalar loss function w.r.t the model parameters. The simulator is a function of the parameters and outputs the state which is then rendered into an image. We then minimize the L2 norm between the rendered images and the target depth images, obtained by a LIDAR camera.
@@ -49,7 +50,7 @@ The following figure shows the rendered beam in gray overlayed on depth image ca
 <img src="https://user-images.githubusercontent.com/101255383/167427841-8223aca7-4bde-4b0e-aecd-934f17a1321f.png" width=750>
   </p>
 
-## Heterogenous Materials
+## Heterogeneous Materials
 We have fabricated objects made of two types of silicone. Each material is assigned its own Young's modulus which is initially assumed to have the same random value.
 Other than hanging, we have also studied these objects when they are actively twisted.
 
@@ -104,3 +105,8 @@ For a simple robot design, the manufacturing pipeline can be divided into the fo
 
 https://user-images.githubusercontent.com/101255383/167379976-bce8bd37-67c9-42bf-b191-37ace72f6950.mp4
 
+## Citation
+Please refer to this work using
+<p align="center">
+K. Arnavaz et al. "Differentiable Depth for Real2Sim Calibration of Soft Body Simulations", Journal of X, 20YY.
+  </p>
