@@ -23,10 +23,11 @@ Every part in our pipeline is differentiable, as a result we can use the chain r
 To run this experiment, use the following bash scripts depending on the type of the material and the shape of the object.
 ```
 ./scripts/static_hang_ecoflex_cantilever.sh
-./scripts/static_hang_moldstar_cantilever.sh
 ./scripts/static_hang_ecoflex_spine.sh
+./scripts/static_hang_moldstar_cantilever.sh
 ./scripts/static_hang_moldstar_spine.sh
 ./scripts/static_hang_ecoflex+moldstar_cantilever.sh
+./scripts/static_hang_ecoflex_dragon.sh
 ```
 ## Twisting Experiment
 To run this experiment, use the following.
