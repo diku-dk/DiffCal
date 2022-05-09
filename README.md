@@ -22,47 +22,56 @@ Every part in our pipeline is differentiable, as a result we can use the chain r
 * `main.py` runs the specified experiment. To get help with the experiment configuration, use `python main.py --help`.
 
 ## Experiments
-The following table summerizes the experiments conducted.
+The following table summerizes the experiments conducted. The goal is to find the parameter(s) such that the rendered image resembles the depth camera image. The experiments are repeated with 10 random initial parameters to study robustness. In our experiments, the Possion ratio is kept fixed, but one could also optimize with respect to it as well.
 ![Untitled (1)](https://user-images.githubusercontent.com/101255383/167411542-bcc31469-59c2-4674-b959-79680579b55c.png)
 
-## Free Hanging Experiment
+## Passive Deformation
+The object is allowed to hang freely under gravity and depth images are obtained in steady state.
+
 To run this experiment, use the following bash scripts depending on the type of the material and the shape of the object.
 ```
 ./scripts/static_hang_ecoflex_cantilever.sh
 ./scripts/static_hang_ecoflex_spine.sh
 ./scripts/static_hang_moldstar_cantilever.sh
 ./scripts/static_hang_moldstar_spine.sh
-./scripts/static_hang_ecoflex+moldstar_cantilever.sh
-./scripts/static_hang_ecoflex_dragon.sh
 ```
-![Untitled](https://user-images.githubusercontent.com/101255383/167410437-bd36f7fa-b25e-4964-91ab-bdeadc9f356c.png)
+![image](https://user-images.githubusercontent.com/101255383/167427922-c9ade1ab-ec4e-4107-ae76-f882c4659769.png)
 
-## Twisting Experiment
+The following figure shows the rendered beam in gray overlayed on depth image camera in color. The simulation matches the real world when optimized.
+![image](https://user-images.githubusercontent.com/101255383/167427841-8223aca7-4bde-4b0e-aecd-934f17a1321f.png)
+
+
+## Heterogenous Materials
+We have fabricated objects made of two types of silicone. Each material is assigned its own Young's modulus which is initially assumed to have the same random value.
+Other than hanging, we have also studied these objects when they are actively twisted.
+
 To run this experiment, use the following.
 ```
+./scripts/static_hang_ecoflex+moldstar_cantilever.sh
 ./scripts/static_twist_ecoflex+moldstar_cantilever.sh
 ```
-![image](https://user-images.githubusercontent.com/101255383/167411063-49ef2b98-25fe-425b-a654-5a95c0d0c3a8.png)
+![image](https://user-images.githubusercontent.com/101255383/167428088-4fa8ec47-9d71-4f93-bc0e-16c5df28a373.png)
 
 ## Tetwise Experiment
-To run this experiment in hanging deformation mode, run
+Objects might not be perfectly uniform in their material properties. Thus, we assume each tetrahedron has its own Young's modulus which can be optimized. It is more interesting to study this assumption for objects made of two types of material. We can then visualize the spatial distribution of Young's moduli. We have experimented with hanging and twisting deformation modes separatly and jointly. In the joint experiment, both modes are minimized with equal weighting while sharing the same parameters. 
+
+To run this experiment in hanging or twisting modes, run
 ```
 ./scripts/static_hang_ecoflex+moldstar_cantilever_tetwise.sh
-```
-![image](https://user-images.githubusercontent.com/101255383/167413875-4b62ff5f-300c-446d-9a52-6fe3d4f2e8b6.png)
-
-To run this experiment in twisting mode, run
-```
 ./scripts/static_twist_ecoflex+moldstar_cantilever_tetwise.sh
-```
-![image](https://user-images.githubusercontent.com/101255383/167411213-c5824684-523a-4fac-a98c-b68c0db43a6b.png)
-You can also share the same parameters and optimize for both modes simultaneously.
-```
 ./scripts/static_hang+twist_ecoflex+moldstar_cantilever_tetwise.sh
 ```
-![image](https://user-images.githubusercontent.com/101255383/167411255-1987df9a-de10-400e-8a45-8d7fbdd21ebd.png)
+![123](https://user-images.githubusercontent.com/101255383/167430176-83bacd20-6c59-4c73-b77c-edcbf1f2ec10.png)
+
+## Complex Shapes
+Our method also deals well with objects with complex shapes. We have experimented with XYZ RBG dragon, which can be run by
+```
+./scripts/static_hang_ecoflex_dragon.sh
+```
+![image](https://user-images.githubusercontent.com/101255383/167430850-13c7fbae-4981-40fe-aa85-30b828ed3d1b.png)
 
 ## Viscosity Estimation
+We can also use our method to calibrate the dynamic motion of soft bodies. In addition to the Young's modulus, the density of the object and the damping factor are also optimized in this experiment. In this setup, depth images are captured continously while the beam is oscillating. This following runs this experiment:
 ```
 ./scripts/dynamic_hang_moldstar_cantilever.sh
 ```
