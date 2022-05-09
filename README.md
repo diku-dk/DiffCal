@@ -9,8 +9,8 @@ All python dependencies are listed in `requirements.txt`. To create a virtual en
 ```
 ./scripts/dependencies.sh
 ```
-## Data
-All CAD models are stored at `data/cad_models`, and the results of the paper experiments are stored under `data/paper/*/results`. Beside the results, the setting for each experiment is specified in a `.exp` file. Note that all experiments in the paper are repeated 10 times with random initial parameters.  
+## Folder Structure
+All CAD models are stored at `CAD_models`, and the results of the paper experiments are stored under `data/paper/*/results`. Beside the results, the setting for each experiment is specified in a `.exp` file. Note that all experiments in the paper are repeated 10 times with random initial parameters.  
 
 ## Method
 Every part in our pipeline is differentiable, as a result we can use the chain rule to get the gradient of the scalar loss function w.r.t the model parameters. The simulator is a function of the parameters and outputs the state which is then rendered into an image. We then minimize the L2 norm between the rendered images and the target depth images, obtained by a LIDAR camera. The code for each segment can be found under `src` directory.
@@ -50,3 +50,5 @@ You can also share the same parameters and optimize for both modes simultaneousl
 ```
 ./scripts/dynamic_hang_moldstar_cantilever.sh
 ```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Gz8eCLfAGM0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
