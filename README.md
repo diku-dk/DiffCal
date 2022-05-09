@@ -15,9 +15,9 @@ Every part in our pipeline is differentiable, as a result we can use the chain r
 ## Folder Structure
 * `CAD_models` has the digital model of the all the object shapes in our experiments.
 * `exp_data` has the data and the results of all the experiments in the paper and more.
-  * `exp_data/*/*.exp` has the configuration of each experiment. Please read the `exp_data/naming_guide.txt` for the subfolder naming convention.
-  * In `exp_data/*/camera_data`, you can find the LIDAR depth images as `d_*.npy`, the RGB images`c_*.npy`, and the view transform matrix as `v_*.npy`.
-  * You can find the results of the 10 experiment runs with random initial parameters in `exp_data/*/results/log`. They contain loss, gradient, and the parameters value over training iterations.
+   * `exp_data/*/*.exp` has the configuration of each experiment. Please read the `exp_data/naming_guide.txt` for the subfolder naming convention.
+   * In `exp_data/*/camera_data`, you can find the LIDAR depth images as `d_*.npy`, the RGB images`c_*.npy`, and the view transform matrix as `v_*.npy`.
+   * You can find the results of the 10 experiment runs with random initial parameters in `exp_data/*/results/log`. They contain loss, gradient, and the parameters value over training iterations.
 * `src` has the code for each part introduced in Method section. 
 * `main.py` runs the specified experiment. To get help with the experiment configuration, use `python main.py --help`.
 
@@ -49,7 +49,8 @@ To run this experiment in hanging deformation mode, run
 ```
 ./scripts/static_hang_ecoflex+moldstar_cantilever_tetwise.sh
 ```
-![image](https://user-images.githubusercontent.com/101255383/167411148-283f65cb-6f7b-425e-b688-d935f0e100f3.png)
+![image](https://user-images.githubusercontent.com/101255383/167413875-4b62ff5f-300c-446d-9a52-6fe3d4f2e8b6.png)
+
 To run this experiment in twisting mode, run
 ```
 ./scripts/static_twist_ecoflex+moldstar_cantilever_tetwise.sh
@@ -70,14 +71,14 @@ You can also share the same parameters and optimize for both modes simultaneousl
 ## Making Soft Robots
 In the video below, the process of creating a simple cable-driven robot can be found.
 For a simple robot design, the manufacturing pipeline can be divided into the following steps:
-- Designing a 3D model of the robot (we have been using OpenSCAD with great success)
-- Creating a mold from the model from (1)
-- Slicing the 3D model of the mold (using a tool such as Cura)
-- Printing the mold on a 3D printer (we currently have 4 x Creality CR-10 Max printers and some smaller + older printers)
-- Mixing silicone (Note that the silicone we use is a 2-part solution and that it starts curing as soon as the two parts are mixed)
-- Removing air bubbles by placing the solution in a vacuum chamber
-- Placing any internal structures in the mold (Optional)
-- Pouring in silicone
-- Removing the robot from the mold
+1. Designing a 3D model of the robot (we have been using OpenSCAD with great success)
+2. Creating a mold from the model from (1)
+3. Slicing the 3D model of the mold (using a tool such as Cura)
+4. Printing the mold on a 3D printer (we currently have 4 x Creality CR-10 Max printers and some smaller + older printers)
+5. Mixing silicone (Note that the silicone we use is a 2-part solution and that it starts curing as soon as the two parts are mixed)
+6. Removing air bubbles by placing the solution in a vacuum chamber
+7. Placing any internal structures in the mold (Optional)
+8. Pouring in silicone
+9. Removing the robot from the mold
 https://user-images.githubusercontent.com/101255383/167379976-bce8bd37-67c9-42bf-b191-37ace72f6950.mp4
 
