@@ -80,5 +80,6 @@ For a simple robot design, the manufacturing pipeline can be divided into the fo
 7. Placing any internal structures in the mold (Optional)
 8. Pouring in silicone
 9. Removing the robot from the mold
+
 https://user-images.githubusercontent.com/101255383/167379976-bce8bd37-67c9-42bf-b191-37ace72f6950.mp4
 
