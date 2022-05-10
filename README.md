@@ -26,7 +26,7 @@ Every part in our pipeline is differentiable, as a result we can use the chain r
 * `main.py` runs the specified experiment. To get help with the experiment configuration, use `python main.py --help`.
 
 ## Experiments
-The following table summerizes the experiments conducted. The goal is to find the parameter(s) such that the rendered image resembles the depth camera image. The experiments are repeated with 10 random initial parameters to study robustness. In our experiments, the Possion ratio is kept fixed, but one could also optimize with respect to it as well.
+The following table summarizes the experiments conducted. The goal is to find the parameter(s) such that the rendered image resembles the depth camera image. The experiments are repeated with 10 random initial parameters to study robustness. In our experiments, the Poisson's ratio is kept fixed, but one could also optimize with respect to it as well.
 
 ![Untitled (1)](https://user-images.githubusercontent.com/101255383/167411542-bcc31469-59c2-4674-b959-79680579b55c.png)
 
@@ -64,7 +64,7 @@ To run this experiment, use the following.
   </p>
 
 ## Tetwise Experiment
-Objects might not be perfectly uniform in their material properties. Thus, we assume each tetrahedron has its own Young's modulus which can be optimized. It is more interesting to study this assumption for objects made of two types of material. We can then visualize the spatial distribution of Young's moduli. We have experimented with hanging and twisting deformation modes separatly and jointly. In the joint experiment, both modes are minimized with equal weighting while sharing the same parameters. 
+Objects might not be perfectly uniform in their material properties. Thus, we assume each tetrahedron has its own Young's modulus which can be optimized. It is more interesting to study this assumption for objects made of two types of material. We can then visualize the spatial distribution of Young's moduli. We have experimented with hanging and twisting deformation modes separately and jointly. In the joint experiment, both modes are minimized with equal weighting while sharing the same parameters. 
 
 To run this experiment in hanging or twisting modes, run
 ```
@@ -84,7 +84,7 @@ Our method also deals well with objects with complex shapes. We have experimente
   </p>
 
 ## Viscosity Estimation
-We can also use our method to calibrate the dynamic motion of soft bodies. In addition to the Young's modulus, the density of the object and the damping factor are also optimized in this experiment. In this setup, depth images are captured continously while the beam is oscillating. The following runs this experiment:
+We can also use our method to calibrate the dynamic motion of soft bodies. In addition to the Young's modulus, the density of the object and the damping factor are also optimized in this experiment. In this setup, depth images are captured continuously while the beam is oscillating. The following runs this experiment:
 ```
 ./scripts/dynamic_hang_moldstar_cantilever.sh
 ```
