@@ -2,6 +2,5 @@ __pycache__/
 *.py[cod]
 *$py.class
 /Max
-/tests
 /plots
 alaki.py
