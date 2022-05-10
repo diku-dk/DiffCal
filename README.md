@@ -17,7 +17,7 @@ Every part in our pipeline is differentiable, as a result we can use the chain r
 </p>
 
 ## Folder Structure
-* `CAD_models` has the digital model of the all the object shapes in our experiments.
+* `CAD_models` has the surface mesh and the volume mesh of the all the object shapes in our experiments.
 * `exp_data` has the data and the results of all the experiments in the paper and more.
    * `exp_data/*/*.exp` has the configuration of each experiment. Please read the `exp_data/naming_guide.txt` for the subfolder naming convention.
    * In `exp_data/*/camera_data`, you can find the LIDAR depth images as `d_*.npy`, the RGB images`c_*.npy`, and the view transform matrix as `v_*.npy`.
