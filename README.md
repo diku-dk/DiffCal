@@ -108,5 +108,5 @@ https://user-images.githubusercontent.com/101255383/167379976-bce8bd37-67c9-42bf
 ## Citation
 Please refer to this work using
 <p align="center">
-K. Arnavaz et al. "Differentiable Depth for Real2Sim Calibration of Soft Body Simulations", In Computer Graphics Forum, 2022.
+K. Arnavaz, M. Kragballe Nielsen, P.G. Kry, M. Macklin, K. Erleben. "Differentiable Depth for Real2Sim Calibration of Soft Body Simulations", In Computer Graphics Forum, 2022.
   </p>
