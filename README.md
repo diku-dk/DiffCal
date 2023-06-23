@@ -107,6 +107,15 @@ https://user-images.githubusercontent.com/101255383/167379976-bce8bd37-67c9-42bf
 
 ## Citation
 Please refer to this work using
-<p align="center">
-K. Arnavaz, M. Kragballe Nielsen, P.G. Kry, M. Macklin, K. Erleben. "Differentiable Depth for Real2Sim Calibration of Soft Body Simulations", In Computer Graphics Forum, 2022.
-  </p>
+```
+@inproceedings{arnavaz2023differentiable,
+  title={Differentiable Depth for Real2Sim Calibration of Soft Body Simulations},
+  author={Arnavaz, K and Nielsen, M Kragballe and Kry, PG and Macklin, M and Erleben, K},
+  booktitle={Computer Graphics Forum},
+  volume={42},
+  number={1},
+  pages={277--289},
+  year={2023},
+  organization={Wiley Online Library}
+}
+```
